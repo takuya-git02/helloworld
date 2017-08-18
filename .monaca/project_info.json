@@ -7,8 +7,8 @@
     "plugin_settings": {
         "cordova-plugin-camera": {
             "variables": [
-                "CAMERA_USAGE_DESCRIPTION=\"This app will use the camera\"",
-                "PHOTOLIBRARY_USAGE_DESCRIPTION=\"This app will use the photolibrary\""
+                "CAMERA_USAGE_DESCRIPTION=This app will use the camera",
+                "PHOTOLIBRARY_USAGE_DESCRIPTION=This app will use the photolibrary"
             ]
         }
     },
