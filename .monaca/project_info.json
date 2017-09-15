@@ -4,6 +4,8 @@
     "plugins": [
         "mobi.monaca.plugins.Monaca"
     ],
+    "title-ja": "はじめてのMonacaアプリ",
+    "title-en": "Hello, Monaca!",
     "plugin_settings": {
         "cordova-plugin-camera": {
             "variables": [
