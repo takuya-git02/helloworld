@@ -49,7 +49,7 @@ var beep = function() {
 };
 
 var vibrate = function() {
-    navigator.notification.vibrate(500);
+    navigator.vibrate(500);
 };
 
 function roundNumber(num) {
@@ -163,7 +163,7 @@ function toggleCompass() {
         navigator.compass.clearWatch(watchID);
         watchID = null;
         updateHeading({ magneticHeading : "Off"});
-    } else {        
+    } else {
         var options = { frequency: 1000 };
         watchID = navigator.compass.watchHeading(updateHeading, function(e) {
             alert('Compass Error: ' + e.code);
