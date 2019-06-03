@@ -52,39 +52,6 @@ var vibrate = function() {
     navigator.vibrate(500);
 };
 
-function roundNumber(num) {
-    var dec = 3;
-    var result = Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
-    return result;
-}
-
-var accelerationWatch = null;
-
-function updateAcceleration(a) {
-    document.getElementById('x').innerHTML = roundNumber(a.x);
-    document.getElementById('y').innerHTML = roundNumber(a.y);
-    document.getElementById('z').innerHTML = roundNumber(a.z);
-}
-
-var toggleAccel = function() {
-    if (accelerationWatch !== null) {
-        navigator.accelerometer.clearWatch(accelerationWatch);
-        updateAcceleration({
-            x : "",
-            y : "",
-            z : ""
-        });
-        accelerationWatch = null;
-    } else {
-        var options = {};
-        options.frequency = 1000;
-        accelerationWatch = navigator.accelerometer.watchAcceleration(
-                updateAcceleration, function(ex) {
-                    alert("accel fail (" + ex.name + ": " + ex.message + ")");
-                }, options);
-    }
-};
-
 var preventBehavior = function(e) {
     e.preventDefault();
 };
@@ -117,26 +84,6 @@ function close() {
     viewport.style.display = "none";
 }
 
-function contacts_success(contacts) {
-    alert(contacts.length
-            + ' contacts returned.'
-            + (contacts[2] && contacts[2].name ? (' Third contact is ' + contacts[2].name.formatted)
-                    : ''));
-}
-
-function contacts_failed(msgObject){
-    alert("Failed to access contact list:" + JSON.stringify(msgObject));
-}
-
-function get_contacts() {
-    var obj = new ContactFindOptions();
-    obj.filter = "";
-    obj.multiple = true;
-    navigator.contacts.find(
-            [ "displayName", "name" ], contacts_success,
-            contacts_failed, obj);
-}
-
 function check_network() {
     var networkState = navigator.network.connection.type;
 
@@ -150,25 +97,6 @@ function check_network() {
     states[Connection.NONE]     = 'No network connection';
 
     confirm('Connection type:\n ' + states[networkState]);
-}
-
-var watchID = null;
-
-function updateHeading(h) {
-    document.getElementById('h').innerHTML = h.magneticHeading;
-}
-
-function toggleCompass() {
-    if (watchID !== null) {
-        navigator.compass.clearWatch(watchID);
-        watchID = null;
-        updateHeading({ magneticHeading : "Off"});
-    } else {
-        var options = { frequency: 1000 };
-        watchID = navigator.compass.watchHeading(updateHeading, function(e) {
-            alert('Compass Error: ' + e.code);
-        }, options);
-    }
 }
 
 function init() {
