@@ -1,12 +1,13 @@
 {
   "name": "monaca-template-helloworld",
+  "version": "2.0.0",
   "displayName": "Monaca Template HelloCordova",
   "scripts": {
     "monaca:preview": "npm run dev",
     "dev": "browser-sync start -s www/ --watch --port 8080 --ui-port 8081"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.5",
+    "browser-sync": "^2.26.7",
     "cordova": "^9.0.0"
   },
   "dependencies": {
